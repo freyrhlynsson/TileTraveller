@@ -61,4 +61,5 @@ while not has_won:
             ques += '(W)est'
         k+= 1
     print(ques)
-    direction = input('You can travel: ')
+    print = ('You can travel: ')
+    direction = input("Direction: ")
