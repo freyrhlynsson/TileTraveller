@@ -39,7 +39,7 @@ def is_border(x,y):
 
 def is_win(x,y):
     if x == 3 and y == 1:
-        print('Victory')
+        print('Victory!')
         return True
     return False
 
@@ -74,9 +74,9 @@ while not has_won:
             l += 1
         k+= 1
     ques += '.'
-    print('You can travel: {}'.format(ques))
     is_invalid = True
     while is_invalid:
+        print('You can travel: {}'.format(ques))
         direction = input("Direction: ").lower()
         if direction == 'n':
             if direction_num[0] == '0':
