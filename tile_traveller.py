@@ -42,24 +42,39 @@ def is_win(x,y):
         return True
     return False
 
-x,y = 2,2
+def is_or(k,ques):
+    if k > 0:
+        ques += ' or '
+        return ques
+    return ques
+
+x,y = 1,2
 has_won = is_win(x,y)
 while not has_won:
     direction_num = is_border(x,y)
     ques = ''
     k = 0
+    l = 0
     for i in direction_num:
-        if k > 0:
-            ques += ' or '
         if k == 0 and i == '1':
             ques += '(N)orth'
+            l += 1
         elif k == 1 and i == '1':
+            ques = is_or(l,ques)
             ques += '(E)ast'
+            l += 1
         elif k == 2 and i == '1':
+            ques = is_or(l,ques)
             ques += '(S)outh'
+            l += 1
         elif k == 3 and i == '1':
+            ques = is_or(l,ques)
             ques += '(W)est'
+            l += 1
         k+= 1
+    ques += '.'
     print(ques)
-    print = ('You can travel: ')
+    print('You can travel: {}'.format(ques))
     direction = input("Direction: ")
+
+    has_won = is_win(x,y)
