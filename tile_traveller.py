@@ -39,6 +39,7 @@ def is_border(x,y):
 
 def is_win(x,y):
     if x == 3 and y == 1:
+        print('Victory')
         return True
     return False
 
@@ -48,7 +49,7 @@ def is_or(k,ques):
         return ques
     return ques
 
-x,y = 1,2
+x,y = 1,1
 has_won = is_win(x,y)
 while not has_won:
     direction_num = is_border(x,y)
@@ -73,8 +74,32 @@ while not has_won:
             l += 1
         k+= 1
     ques += '.'
-    print(ques)
     print('You can travel: {}'.format(ques))
-    direction = input("Direction: ")
-
+    is_invalid = True
+    while is_invalid:
+        direction = input("Direction: ").lower()
+        if direction == 'n':
+            if direction_num[0] == '0':
+                print('Not a valid direction!')
+            else:
+                y += 1
+                break
+        elif direction == 'e':
+            if direction_num[1] == '0':
+                print('Not a valid direction!')
+            else:
+                x += 1
+                break
+        elif direction == 's':
+            if direction_num[2] == '0':
+                print('Not a valid direction!')
+            else:
+                y -= 1
+                break
+        elif direction == 'w':
+            if direction_num[3] == '0':
+                print('Not a valid direction!')
+            else:
+                x -= 1
+                break
     has_won = is_win(x,y)
